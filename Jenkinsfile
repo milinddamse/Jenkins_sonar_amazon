@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('Clone Source Code') {
             steps {
-                git branch: 'main', url: 'https://github.com/milinddamse/Amazon-Jenkins.git'
+                git branch: 'main', url: 'https://github.com/milinddamse/Jenkins_sonar_amazon.git'
             }
         }
  
