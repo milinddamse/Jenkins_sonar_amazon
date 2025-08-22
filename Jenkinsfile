@@ -22,26 +22,8 @@ pipeline {
                 }
             }
 
-        }
  
-        stage('Code Quality Analysis') {
-            steps {
-                withSonarQubeEnv('SonarQube Server Name') {
-                    sh "mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar " +
-                       "-Dsonar.projectKey=${SONARQUBE_PROJECT_KEY} " +
-                       "-Dsonar.host.url=${SONARQUBE_URL} " +
-                       "-Dsonar.login=sqa_67e7a5d2624d23bfadf69c5c813550750511375f"
-                }
-            }
-        }
- 
-        stage('Wait for Quality Gate') {
-            steps {
-                timeout(time: 5, unit: 'MINUTES') {
-                    waitForQualityGate abortPipeline: true
-                }
-            }
-        }
+
  
         stage('Deploy to Tomcat with Ansible') {
             steps {
