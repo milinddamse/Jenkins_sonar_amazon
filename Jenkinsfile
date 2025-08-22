@@ -24,7 +24,7 @@ pipeline {
             post {
                 success {
                     // Archive the WAR file for later use
-                    archiveArtifacts artifacts: '/home/milind/target/Amazon.war', fingerprint: true
+                    archiveArtifacts artifacts: '/target/*.war', fingerprint: true
                 }
             }
         }
