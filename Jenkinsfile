@@ -21,12 +21,7 @@ pipeline {
                     sh 'mvn clean package'
                 }
             }
-            post {
-                success {
-                    // Archive the WAR file for later use
-                    archiveArtifacts artifacts: '/target/*.war', fingerprint: true
-                }
-            }
+
         }
  
         stage('Code Quality Analysis') {
