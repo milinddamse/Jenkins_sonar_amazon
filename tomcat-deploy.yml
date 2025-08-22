@@ -1,0 +1,22 @@
+---
+- name: Deploy WAR to Tomcat
+  hosts: local_systems
+  become: yes
+  tasks:
+    - name: Stop Tomcat service
+      ansible.builtin.service:
+        name: tomcat9  # Change to tomcat8, tomcat10 etc., as per your setup
+        state: stopped
+ 
+    - name: Copy the WAR file to Tomcat's webapps directory
+      ansible.builtin.copy:
+        src: target/Amazon.war  # Ensure this matches your project's WAR file name
+        dest: /tmp/apache-tomcat-9.0.108/webapps/Amazon.war
+        owner: tomcat
+        group: tomcat
+        mode: '0644'
+ 
+    - name: Start Tomcat service
+      ansible.builtin.service:
+        name: tomcat9
+        state: started
