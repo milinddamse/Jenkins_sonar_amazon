@@ -24,7 +24,7 @@ pipeline {
             post {
                 success {
                     // Archive the WAR file for later use
-                    archiveArtifacts artifacts: 'target/*.war', fingerprint: true
+                    archiveArtifacts artifacts: '/target/Amazon.war', fingerprint: true
                 }
             }
         }
